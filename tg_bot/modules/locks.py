@@ -8,16 +8,10 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
-
-import haruka.modules.sql.locks_sql as sql
-from haruka import dispatcher, SUDO_USERS, LOGGER
-from haruka.modules.disable import DisableAbleCommandHandler
-from haruka.modules.helper_funcs.chat_status import can_delete, is_user_admin, user_not_admin, user_admin, \
-    bot_can_delete, is_bot_admin
-from haruka.modules.log_channel import loggable
-from haruka.modules.sql import users_sql
-
-from haruka.modules.tr_engine.strings import tld
+import tg_bot.modules.sql.rules_sql as sql
+from tg_bot import dispatcher
+from tg_bot.modules.helper_funcs.chat_status import user_admin
+from tg_bot.modules.helper_funcs.string_handling import markdown_parser
 
 LOCK_TYPES = {
     'sticker':
